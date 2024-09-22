@@ -5,8 +5,9 @@ import ErrorApi from '../Error'
 //const filter = new Filter()
 const generateQueries = async (query: string | undefined): Promise<string> => {
   if (!query) return '';
-  //if (filter.isProfane(query)) throw new ErrorApi("Profane Word Found", 400)
-  const genAI = new GoogleGenerativeAI(env.google_api_key || '')
+  if (query.trim().split(' ').length < 2) return query
+    //if (filter.isProfane(query)) throw new ErrorApi("Profane Word Found", 400)
+    const genAI = new GoogleGenerativeAI(env.google_api_key || '')
   const model = genAI.getGenerativeModel({
     model: env.gemini_model || '', safetySettings: [
       {
