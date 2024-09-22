@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "ts-node dist/index.js",
+    "start": "ts-node src/index.ts",
     "lint": "eslint src/**/*.{ts,tsx}",
     "dev": "nodemon"
   },
