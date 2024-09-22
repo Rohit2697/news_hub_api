@@ -8,7 +8,7 @@ const getTopHeadline = async (queryObj: TopHeadLine): Promise<NewsResult> => {
     const response = await api.get('/top-headlines', {
       params: queryObj
     })
-
+    console.log(queryObj)
     const data = response.data as NewsResult
     const validArticles = filterArticles(data.articles)
     return {

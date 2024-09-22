@@ -26,7 +26,9 @@ export interface NewsArticle {
 }
 
 export interface EverythingAPIQueries {
+
   apiKey: string,
+
   q?: string,
   sources?: string,
   domains?: string,
@@ -42,11 +44,34 @@ export interface EverythingAPIQueries {
 }
 
 export interface TopHeadLine {
+
   apiKey: string,
   country?: string,
   category: string,
   sources?: string,
   q?: string,
+  language?: string,
   pageSize: number,
+  sortBy?: "relevancy" | "popularity" | "publishedAt",
   page: number
+}
+
+export interface AllNewsQueryObj {
+  endpoint: string
+  category?: string,
+  apiKey: string,
+  q: string
+  sortBy: "relevancy" | "popularity" | "publishedAt",
+  page: number,
+  pageSize: number,
+  language: string
+}
+export interface AllNewsParamObj {
+  category?: string,
+  apiKey: string,
+  q: string
+  sortBy: "relevancy" | "popularity" | "publishedAt",
+  page: number,
+  pageSize: number,
+  language: string
 }

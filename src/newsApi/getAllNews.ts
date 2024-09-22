@@ -1,16 +1,20 @@
 import api from "./api";
-import { NewsResult, EverythingAPIQueries } from "../interface";
+import { NewsResult, AllNewsQueryObj, AllNewsParamObj } from "../interface";
 import filterArticles from "../utils/filterValidArticles";
 
 import { AxiosError } from "axios";
 import ErrorApi from "../Error";
 
-const getAllNews = (queryObj: EverythingAPIQueries): Promise<NewsResult> => {
+const getAllNews = (queryObj: AllNewsQueryObj): Promise<NewsResult> => {
 
   return new Promise((res, rej) => {
+    console.log('calling endpoing: ', queryObj.endpoint)
+    console.log('query obj: ', queryObj)
+    const { endpoint, ...paramObj } = queryObj
 
-    api.get('/everything', {
-      params: queryObj
+    const AxiosparamObj: AllNewsParamObj = paramObj
+    api.get(endpoint, {
+      params: AxiosparamObj
     }).then(response => {
       const data: NewsResult = response.data
       const validArticles = filterArticles(data.articles)
