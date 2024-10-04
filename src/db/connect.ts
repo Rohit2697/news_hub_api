@@ -1,3 +1,4 @@
 import mongoose from 'mongoose';
 import logger from '../logger';
-mongoose.connect('mongodb://localhost:27017/newsdb').then(() => logger.info("connected")).catch(err => logger.error(err))
+import env from '../env';
+mongoose.connect(`mongodb+srv://${encodeURIComponent(env.mongo_username as string)}:${encodeURIComponent(env.mongo_password as string)}@atlascluster.bv99nzt.mongodb.net/`).then(() => logger.info("connected")).catch(err => logger.error(err))
