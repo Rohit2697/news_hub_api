@@ -38,4 +38,4 @@ const generateQueries = async (query: string | undefined): Promise<string> => {
 }
 export default generateQueries
 
-// generateQueries("").then(res => console.log(res)).catch(err => console.log(err))
+//generateQueries("Indias highest court has ordered protesting doctors who have been on strike").then(res => console.log(res)).catch(err => console.log(err))

@@ -1,4 +1,4 @@
-
+import { Document } from "mongoose"
 export interface NewsResult {
   status: "ok" | "error"
   totalResults: number
@@ -28,7 +28,6 @@ export interface NewsArticle {
 export interface EverythingAPIQueries {
 
   apiKey: string,
-
   q?: string,
   sources?: string,
   domains?: string,
@@ -74,4 +73,43 @@ export interface AllNewsParamObj {
   page: number,
   pageSize: number,
   language: string
+}
+
+export interface IUser extends Document {
+  username: string,
+  email: string,
+  password: string,
+  role: string
+}
+export interface IAllNews extends Document {
+  source: {
+    id: string
+    name: string
+
+  },
+  category: string,
+  author: string
+  title: string
+  description: string
+  url: string
+  urlToImage: string
+  publishedAt: Date
+  content: string
+}
+export interface CategoryNewsQuery {
+  category: string,
+
+}
+
+export interface SearchNewsQuery {
+  $or?: [
+    { title: { $regex: RegExp } },
+    { content: { $regex: RegExp } }
+  ]
+}
+export interface IPopulateNews {
+  title: string;
+  content: string;
+  category: string;
+  // other fields like publishedAt, etc., if necessary
 }
